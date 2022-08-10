@@ -14,8 +14,10 @@
 
         <div class="field is-grouped is-grouped-right">
           <div class="control">
-            <button class="button is-link
-              has-background-success"
+            <button 
+              @click="addNotes"
+              :disabled="!newNote"
+              class="button is-link has-background-success"
             >
               Add New Notes
             </button>
@@ -55,7 +57,7 @@
  * notes
  */
 
-  const newNote = ref('Telly tuby second guess')
+  const newNote = ref('')
 
   const notes = ref ([
       {
@@ -68,6 +70,20 @@
       },
   ])
 
+  const addNotes = () => {
+      const currentDate = new Date().getTime(),
+          id = currentDate.toString()
+
+    const note = {
+      id,
+      content: newNote.value 
+    }
+
+    notes.value.unshift(note)
+
+    newNote.value = ''
+  }
+ 
   
 </script>
 
