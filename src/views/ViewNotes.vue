@@ -8,6 +8,7 @@
                 v-model="newNote"
                 class="textarea" 
                 placeholder="Add a new note" 
+                ref="newNoteRef"
             />
           </div>
         </div>
@@ -28,21 +29,11 @@
         </div>
       </div>
 
-      <div 
+      <FileNotes 
         v-for="note in notes"
         :key="note.id"
-        class="card mb-4"
-      >
-          <div class="card-content">
-              <div class="content">
-                {{ note.content }}
-              </div>
-          </div>
-          <footer class="card-footer">
-            <a href="#" class="card-footer-item">Edit</a>
-            <a href="#" class="card-footer-item">Delete</a>
-          </footer>
-      </div>
+        :note="note"
+      />
     </div>
 </template>
 
@@ -52,13 +43,14 @@
  */
 
   import { ref } from 'vue'
+  import FileNotes from '@/components/Notes/FileNotes.vue'
 
 /**
  * notes
  */
 
   const newNote = ref('')
-
+  const newNoteRef = ref<null>(null)
   const notes = ref ([
       {
         id: "id1",
@@ -80,8 +72,8 @@
     }
 
     notes.value.unshift(note)
-
     newNote.value = ''
+    newNoteRef.value.focus() 
   }
  
   
