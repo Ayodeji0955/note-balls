@@ -13,7 +13,13 @@
             </div>
             <footer class="card-footer">
                 <a href="#" class="card-footer-item">Edit</a>
-                <a href="#" class="card-footer-item">Delete</a>
+                <a  
+                    @click.prevent="handleDeleteClicked"
+                    href="#" 
+                    class="card-footer-item"
+                >
+                    Delete
+                </a>
             </footer>
         </div>
     </div>
@@ -27,16 +33,19 @@
     import { computed } from 'vue'
 
 /*
-    Props
+      Props
  */
-const props = defineProps ({
-    note: {
-        type: Object,
-            required: true
-        }
-    })
+    const props = defineProps ({
+        note: {
+                type: Object,
+                required: true
+            }
+        })
 
-
+/*
+      Emits
+ */
+    const emits = defineEmits (['deleteClicked'])
 /*
       Character length (Computed properties)
  */
@@ -47,7 +56,12 @@ const props = defineProps ({
         return `${ length} ${ description }`
     })
 
-
+/*
+      Handle Delete Clicked
+ */
+    const handleDeleteClicked = () =>   {
+        emits('deleteClicked', props.note.id)
+    }
 </script>
 
 <style>
