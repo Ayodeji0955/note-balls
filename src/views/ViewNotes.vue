@@ -30,62 +30,47 @@
       </div>
 
       <FileNotes 
-        v-for="note in notes"
+        v-for="note in counter.notes"
         :key="note.id"
         :note="note"
-        @deleteClicked="deleteNote"
       />
     </div>
 </template>
 
 <script setup lang="ts">
+
 /**
  *  imports 
  */
 
   import { ref } from 'vue'
   import FileNotes from '@/components/Notes/FileNotes.vue'
+  import { useCounterStore } from '@/stores/counter'
+
+/**
+ *    Stores
+ */
+
+  const counter = useCounterStore()
 
 /**
  * notes
  */
 
   const newNote = ref('')
-  const newNoteRef = ref<null>(null)
-  const notes = ref ([
-      {
-        id: "id1",
-        content: "lorem ipsum dolor sit amet, consectetur adipiscing"
-      },
-      {
-        id: "id2",
-        content: "This is a shorter note! woo!",
-      },
-  ])
+  const newNoteRef = ref<null | string>(null)
+ 
 
   const addNotes = () => {
-      const currentDate = new Date().getTime(),
-          id = currentDate.toString()
 
-    const note = {
-      id,
-      content: newNote.value 
-    }
+    counter.addNotes(newNote.value)
 
-    notes.value.unshift(note)
     newNote.value = ''
     newNoteRef.value.focus() 
   }
  
 
- /*
-    Delete Note
- */
 
-    const deleteNote = idToDelete => {
-      notes.value = notes.value.filter(note => { return note.id !== idToDelete })
-      console.log("deleteNote", idToDelete);
-    }
 </script>
 
 

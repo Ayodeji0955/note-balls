@@ -14,7 +14,7 @@
             <footer class="card-footer">
                 <a href="#" class="card-footer-item">Edit</a>
                 <a  
-                    @click.prevent="handleDeleteClicked"
+                    @click.prevent="counter.deleteNote(note.id)"
                     href="#" 
                     class="card-footer-item"
                 >
@@ -31,7 +31,12 @@
     Imports 
  */
     import { computed } from 'vue'
+    import { useCounterStore } from '@/stores/counter'
 
+/**
+   Stores
+ */
+    const counter = useCounterStore()
 /*
       Props
  */
@@ -43,10 +48,6 @@
         })
 
 /*
-      Emits
- */
-    const emits = defineEmits (['deleteClicked'])
-/*
       Character length (Computed properties)
  */
     const characterLength = computed (() => {
@@ -56,12 +57,6 @@
         return `${ length} ${ description }`
     })
 
-/*
-      Handle Delete Clicked
- */
-    const handleDeleteClicked = () =>   {
-        emits('deleteClicked', props.note.id)
-    }
 </script>
 
 <style>
