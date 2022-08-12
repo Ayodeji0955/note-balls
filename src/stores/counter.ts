@@ -27,9 +27,7 @@ export const useCounterStore = defineStore( 'counter',{
       
     },
     deleteNote(idToDelete: string) {
-      // console.log(idToDelete)
       this.notes = this.notes.filter(note => { return note.id !== idToDelete })
-      // console.log("deleteNote", idToDelete);
     }
   },
   
