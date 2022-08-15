@@ -30,5 +30,10 @@ export const useCounterStore = defineStore( 'counter',{
       this.notes = this.notes.filter(note => { return note.id !== idToDelete })
     }
   },
+  getters:  {
+    getNoteContent: (state) => { 
+      return state.notes[0].content
+    }
+  }
   
 })
