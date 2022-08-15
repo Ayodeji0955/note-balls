@@ -2,6 +2,8 @@
     <div class="notes">
           <AddEditNote
             v-model="newNote"
+            placeholder="Edit Note"
+            ref="addEditNoteRef"
           >
               <template #buttons>
                 <button 
@@ -9,7 +11,7 @@
                   :disabled="!newNote"
                   class="button is-link has-background-success"
                 >
-                  Add New Notes
+                  save Note
                 </button>
               </template> 
           </AddEditNote>
@@ -40,19 +42,16 @@
   const counter = useCounterStore()
 
 /**
- * notes
+ * notes 
  */
 
-  const newNote = ref('')
-  const newNoteRef = ref<null | string>(null)
- 
+    const newNote = ref('')
+    const addEditNoteRef = ref(null)
 
-  const addNotes = () => {
-
+    const addNotes = () => {
     counter.addNotes(newNote.value)
-
     newNote.value = ''
-    newNoteRef.value.focus() 
+    addEditNoteRef.value.focusTextarea()
   }
  
 

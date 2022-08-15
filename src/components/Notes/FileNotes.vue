@@ -13,7 +13,7 @@
             </div>
             <footer class="card-footer">
                 <RouterLink
-                    to="`/editNote/${ note.id }`" 
+                    :to="`/editNote/${ note.id }`" 
                     class="card-footer-item"
                 >
                     Edit
