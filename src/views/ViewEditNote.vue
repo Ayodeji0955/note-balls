@@ -30,7 +30,7 @@
  *     Imports 
  */
       import { ref } from 'vue'
-      import { useRoute } from 'vue-router'
+      import { useRoute, useRouter } from 'vue-router'
       import AddEditNote from '@/components/Notes/AddEditNote.vue'
       import { useCounterStore } from '@/stores/counter'
 
@@ -39,6 +39,7 @@
  */
 
     const route = useRoute()
+    const router = useRouter()
 /**
  *  store
  */
@@ -59,6 +60,7 @@
     const handleSavedClicked = () => {
         // console.log('handleSavedClicked');
         counter.updateNote(route.params.id, noteContent.value)
+        router.push('/')
     }
 </script>
 
