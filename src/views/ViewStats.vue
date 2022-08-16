@@ -19,6 +19,7 @@
             </tbody>
         </table>
         <input  
+            v-model="loveNoteballs"
             class="input"
             type="text"
             placeholder="Do you love noteballs"
@@ -28,15 +29,25 @@
 </template>
 
 <script setup lang="ts">
-/**
+/*
  * Imports
  */
+import { ref } from 'vue'
 import { useCounterStore } from '@/stores/counter'
 import { vAutofocus } from '@/directives/vAutofocus'
+import { useWatchCharacters } from '@/use/useWatchCharacters'
 
-/**
+/*
  *  Stores
  */
-const counter = useCounterStore()
+    const counter = useCounterStore()
 
+/*
+ *  Love noteballs
+ */
+    const loveNoteballs = ref<number | string>('')
+/*
+ *  Watch Characters
+ */
+    useWatchCharacters(loveNoteballs)
 </script>

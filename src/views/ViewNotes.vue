@@ -30,10 +30,11 @@
  *  imports 
  */
 
-  import { ref, watch } from 'vue'
+  import { ref } from 'vue'
   import FileNotes from '@/components/Notes/FileNotes.vue'
   import AddEditNote from '@/components/Notes/AddEditNote.vue'
   import { useCounterStore } from '@/stores/counter'
+  import { useWatchCharacters } from '@/use/useWatchCharacters'
 
 /**
  *    Stores
@@ -53,15 +54,13 @@
     newNote.value = ''
     addEditNoteRef.value.focusTextarea()
   }
- /**
-  *  Watch Characters
-  */
 
-    watch(newNote, (newValue) => {
-      if ( newValue.length === 100 ) {
-        alert('only 100 characters allowed')
-      }
-    })
+/**
+ *  Watch Characters
+ */
+
+    useWatchCharacters(newNote)
+  
 
 </script>
 
