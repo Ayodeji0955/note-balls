@@ -1,7 +1,6 @@
 <template>
     <div class="modal is-active p-2">
         <div class="modal-background">
-
         </div>
         <div 
             class="modal-card"
@@ -39,7 +38,7 @@
 /**
  *  Imports
  */
-    import { ref } from 'vue'
+    import { ref, onMounted, onUnmounted } from 'vue'
     import { onClickOutside } from '@vueuse/core'
 /**
 
@@ -69,11 +68,25 @@
     }
 
 
-    /*
+/*
  *  Click outside to close  
  */  
 
     const modalCardRef = ref(null)
 
     onClickOutside(modalCardRef, closeModal)
+/**
+ *  Keyboard Control
+ */
+    const handleKeyboard = e => {
+          if(e.key === 'Escape') closeModal()
+    }
+
+    onMounted(() => {
+        document.addEventListener('keyup', handleKeyboard)   
+    })
+
+    onUnmounted(() => {
+        document.removeEventListener('keyup', handleKeyboard)   
+    })
 </script>
