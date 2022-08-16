@@ -29,10 +29,15 @@
  *     Imports 
  */
       import { ref } from 'vue'
+      import { useRoute } from 'vue-router'
       import AddEditNote from '@/components/Notes/AddEditNote.vue'
       import { useCounterStore } from '@/stores/counter'
 
+/**
+ *  Router
+ */
 
+    const route = useRoute()
 /**
  *  store
  */
@@ -42,7 +47,9 @@
 /**
  *  notes
  */
-    const noteContent = ref('')
+    const noteContent = ref<string>('')
+    console.log(route.params.id);
+    
 
     noteContent.value = counter.getNoteContent
 

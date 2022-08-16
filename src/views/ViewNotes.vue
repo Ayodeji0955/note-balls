@@ -45,7 +45,7 @@
  * notes 
  */
 
-    const newNote = ref('')
+    const newNote = ref<string>('')
     const addEditNoteRef = ref(null)
 
     const addNotes = () => {
