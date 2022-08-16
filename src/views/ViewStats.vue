@@ -49,5 +49,5 @@ import { useWatchCharacters } from '@/use/useWatchCharacters'
 /*
  *  Watch Characters
  */
-    useWatchCharacters(loveNoteballs)
+    useWatchCharacters(loveNoteballs, 50)
 </script>
