@@ -17,6 +17,7 @@
                     class="textarea" 
                     :placeholder="`${ placeholder }`" 
                     ref="textareaRef"
+                    maxLength="100"
                     v-autofocus
                 />
                 </div>
@@ -36,6 +37,7 @@
  */
 
     import { ref } from 'vue'
+    import { vAutofocus } from '@/directives/vAutofocus'
 /*
  *  Props
  */
@@ -80,15 +82,8 @@
         focusTextarea
     })
 
-/**
- *  Directives
- */
 
-    const vAutofocus = {
-        mounted: (el) => {
-            el.focus()
-        }
-    }
+   
 </script>
 
 <style>

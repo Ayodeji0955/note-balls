@@ -18,6 +18,12 @@
                 </tr>
             </tbody>
         </table>
+        <input  
+            class="input"
+            type="text"
+            placeholder="Do you love noteballs"
+            v-autofocus
+        />
     </div>
 </template>
 
@@ -26,10 +32,11 @@
  * Imports
  */
 import { useCounterStore } from '@/stores/counter'
-
+import { vAutofocus } from '@/directives/vAutofocus'
 
 /**
  *  Stores
  */
 const counter = useCounterStore()
+
 </script>

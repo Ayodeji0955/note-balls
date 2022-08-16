@@ -30,7 +30,7 @@
  *  imports 
  */
 
-  import { ref } from 'vue'
+  import { ref, watch } from 'vue'
   import FileNotes from '@/components/Notes/FileNotes.vue'
   import AddEditNote from '@/components/Notes/AddEditNote.vue'
   import { useCounterStore } from '@/stores/counter'
@@ -53,8 +53,15 @@
     newNote.value = ''
     addEditNoteRef.value.focusTextarea()
   }
- 
+ /**
+  *  Watch Characters
+  */
 
+    watch(newNote, (newValue) => {
+      if ( newValue.length === 100 ) {
+        alert('only 100 characters allowed')
+      }
+    })
 
 </script>
 
