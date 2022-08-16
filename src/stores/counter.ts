@@ -40,7 +40,7 @@ export const useCounterStore = defineStore( 'counter',{
   },
   getters:  {
     getNoteContent: (state) => { 
-      return (id) => {
+      return (id: string) => {
         return state.notes.filter(note => { return note.id == id })[0].content  
       }
     },
