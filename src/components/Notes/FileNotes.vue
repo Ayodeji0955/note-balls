@@ -19,13 +19,16 @@
                     Edit
                 </RouterLink>
                 <a  
-                    @click.prevent="counter.deleteNote(note.id)"
+                    @click.prevent="modals.deleteNote = true"
                     href="#" 
                     class="card-footer-item"
                 >
                     Delete
                 </a>
             </footer>
+            <ModalDeleteNote 
+                v-if="modals.deleteNote"    
+            />
         </div>
     </div>
 </template>
@@ -35,7 +38,8 @@
 /*  
     Imports 
  */
-    import { computed } from 'vue'
+    import { computed, reactive } from 'vue'
+    import ModalDeleteNote from '@/components/Notes/ModalDeleteNote.vue'
     import { useCounterStore } from '@/stores/counter'
 
 /**
@@ -62,6 +66,13 @@
         return `${ length} ${ description }`
     })
 
+/**
+ *  Modals
+ */
+
+    const modals = reactive({
+        deleteNote: false,
+    })
 </script>
 
 <style>

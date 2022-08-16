@@ -77,7 +77,7 @@
     onClickOutside(navbarMenuRef, () => {
         showMobileNav.value = false
     }, {
-        ignore: []
+        ignore: [navbarBurgerRef]
     })
 </script>
 
