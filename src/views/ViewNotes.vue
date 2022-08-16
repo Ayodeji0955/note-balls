@@ -11,7 +11,7 @@
                   :disabled="!newNote"
                   class="button is-link has-background-success"
                 >
-                  save Note
+                  Add New Note
                 </button>
               </template> 
           </AddEditNote>
@@ -34,6 +34,7 @@
   import FileNotes from '@/components/Notes/FileNotes.vue'
   import AddEditNote from '@/components/Notes/AddEditNote.vue'
   import { useCounterStore } from '@/stores/counter'
+  import { useWatchCharacters } from '@/use/useWatchCharacters'
 
 /**
  *    Stores
@@ -45,7 +46,7 @@
  * notes 
  */
 
-    const newNote = ref('')
+    const newNote = ref<string>('')
     const addEditNoteRef = ref(null)
 
     const addNotes = () => {
@@ -53,8 +54,13 @@
     newNote.value = ''
     addEditNoteRef.value.focusTextarea()
   }
- 
 
+/**
+ *  Watch Characters
+ */
+
+    useWatchCharacters(newNote)
+  
 
 </script>
 
