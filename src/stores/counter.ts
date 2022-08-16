@@ -27,12 +27,22 @@ export const useCounterStore = defineStore( 'counter',{
       
     },
     deleteNote(idToDelete: string) {
-      this.notes = this.notes.filter(note => { return note.id !== idToDelete })
+      this.notes = this.notes.filter(note => note.id !== idToDelete )
+    },
+    updateNote(id: string, content: string) {
+      console.log('id', id);
+      console.log('content', content);
+
+      const index = this.notes.findIndex(note => note.id === id ) 
+      this.notes[index].content = content
+      
     }
   },
   getters:  {
     getNoteContent: (state) => { 
-      return state.notes[0].content
+      return (id) => {
+        return state.notes.filter(note => { return note.id == id })[0].content  
+      }
     }
   }
   

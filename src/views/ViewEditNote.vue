@@ -9,11 +9,12 @@
             <template #buttons>
                 <button 
                     @click="$router.back('/')"
-                    class="button is-link is-light"
+                    class="button is-link is-light mr-3"
                 >
                     Cancel
                 </button>
                 <button 
+                    @click="handleSavedClicked"
                     class="button is-link has-background-link"
                     :disabled="!noteContent"
                 >
@@ -48,11 +49,17 @@
  *  notes
  */
     const noteContent = ref<string>('')
-    console.log(route.params.id);
     
+    noteContent.value = counter.getNoteContent(route.params.id)
 
-    noteContent.value = counter.getNoteContent
+/**
+ *  Saved Clicked
+ */
 
+    const handleSavedClicked = () => {
+        // console.log('handleSavedClicked');
+        counter.updateNote(route.params.id, noteContent.value)
+    }
 </script>
 
 <style>
