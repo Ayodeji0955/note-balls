@@ -2,6 +2,7 @@
     <div>
         <div 
             class="card mb-4"
+            
         >
             <div class="card-content">
                 <div class="content">
@@ -48,6 +49,8 @@
    Stores
  */
     const counter = useCounterStore()
+    console.log(counter);
+    
 /*
       Props
  */

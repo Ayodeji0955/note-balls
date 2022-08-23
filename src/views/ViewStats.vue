@@ -45,7 +45,7 @@ import { useWatchCharacters } from '@/use/useWatchCharacters'
 /*
  *  Love noteballs
  */
-    const loveNoteballs = ref<number | string>('')
+    const loveNoteballs = ref('') as never
 /*
  *  Watch Characters
  */

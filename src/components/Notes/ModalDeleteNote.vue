@@ -62,7 +62,7 @@ const props = defineProps({
         }
     })
 
-
+    props.modelValue
 /**
  *  Emits
  */
@@ -93,7 +93,7 @@ const props = defineProps({
 /**
  *  Keyboard Control
  */
-    const handleKeyboard = e => {
+    const handleKeyboard = (e: { key: string }) => {
           if(e.key === 'Escape') closeModal()
     }
 

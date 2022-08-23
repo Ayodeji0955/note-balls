@@ -65,25 +65,26 @@
  *  emits 
  */
     const emit = defineEmits(['update:modelValue'])
-    
+    console.log(emit);
+
 /**
  *  Focus textarea
  */ 
 
-    const textareaRef = ref(null)
+    const textareaRef = ref()
 
-    const focusTextarea = ref<null | {focus: () => null}> (null) 
+    const focusTextarea = () => {
         if (textareaRef.value){
         textareaRef.value.focus()
         // console.log('focusTextarea');
+        }
     }
-
     defineExpose({
         focusTextarea
     })
 
 
-   
+
 </script>
 
 <style>

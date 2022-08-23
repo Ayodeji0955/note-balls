@@ -49,7 +49,7 @@
 /**
  *  notes
  */
-    const noteContent = ref<string>('')
+    const noteContent = ref('')
     
     noteContent.value = counter.getNoteContent(route.params.id)
 

@@ -46,13 +46,13 @@
  * notes 
  */
 
-    const newNote = ref<string>('')
-    const addEditNoteRef = ref(null)
+    const newNote = ref('')
+    const addEditNoteRef = ref()
 
     const addNotes = () => {
     counter.addNotes(newNote.value)
     newNote.value = ''
-    addEditNoteRef.value.focusTextarea()
+    addEditNoteRef.value.focusTextarea
   }
 
 /**
